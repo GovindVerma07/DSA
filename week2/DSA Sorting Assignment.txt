@@ -1,0 +1,138 @@
+Q1. Write a program to sort an array in descending order using bubble sort.
+Ans. import java.util.Arrays;
+     import java.util.Scanner;
+
+    public class DSA2Sorting1 {
+     public static void BubbleSort(int[] arr){
+        for(int i = 0; i < arr.length; i++){
+            boolean isSorted = false;
+            for(int j = 0; j < arr.length-i-1; j++){
+                if(arr[j]<arr[j+1]){
+                    isSorted = true;
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+            if(!isSorted){
+                break;
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the size of Array : ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        System.out.println("Enter elements : ");
+        for(int i = 0; i < arr.length; i++){
+            arr[i] = sc.nextInt();
+        }
+        System.out.println("Sorted Array in Decending Order: ");
+        BubbleSort(arr);
+        System.out.println(Arrays.toString(arr));
+        sc.close();
+      }
+    }
+
+Q2. WAP to sort an array in descending order using selection sort.
+Ans. import java.util.Arrays;
+     import java.util.Scanner;
+
+    public class DSA2Sorting2 {
+      public static void SelectionSort(int[] arr){
+        for(int i = 0; i < arr.length-1; i++){
+            int max_idx = i;
+            for(int j = i+1; j <arr.length; j++){
+                if(arr[j]>arr[max_idx]){
+                    max_idx = j;
+                }
+            }
+            if(max_idx != i){
+                int temp = arr[max_idx];
+                arr[max_idx] = arr[i];
+                arr[i] = temp;
+            }
+        }
+      }
+     public static void main(String[] args) {
+        System.out.println("Enter the size of Array : ");
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        System.out.println("Enter Array elements : ");
+        for(int i = 0; i < arr.length; i++){
+            arr[i] = sc.nextInt();
+        }
+        SelectionSort(arr);
+        System.out.println("Sorted Array in Decending Order: ");
+        System.out.println(Arrays.toString(arr));
+        sc.close();
+     }
+   }
+
+Q3. WAP to sort an array in decreasing order using insertion sort.
+Ans. import java.util.Arrays;
+     import java.util.Scanner;
+
+    public class DSA2Sorting3 {
+     public static void InsertionSort(int[] arr){
+        for(int i = 1; i < arr.length; i++){
+            int j = i;
+            while(j>0 && arr[j] > arr[j-1]){
+                int temp = arr[j];
+                arr[j] = arr[j-1];
+                arr[j-1] = temp;
+                j--;
+            }
+         }
+       }
+        public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the size of Array : ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        System.out.println("Enter Array Elements : ");
+        for(int i = 0; i < arr.length; i++){
+            arr[i] = sc.nextInt();
+        }
+        InsertionSort(arr);
+        System.out.println("Sorted Array in Decending Order : ");
+        System.out.println(Arrays.toString(arr));
+        sc.close();
+      }
+    }
+
+Q4. Find out how many pass would be required to sort the following array in decreasing order using bubble sort.
+    Input Array {3,5,1,6,0}
+Ans. In Bubble Sort we compare every element with their next corresponding element if previous is found smaller than next then swap them and iterate next elements.
+     In given input Array {3,5,1,6,0} 
+     1st pass : 
+               -> 3 compared with 5 there is swap because (3<5) so after swap we get {5,3,1,6,0}.
+               -> 3 compared with 1 there is no swap because (3>1).
+               -> 1 compared with 6 there is swap because (1<6) so after swap we get {5,3,6,1,0}.
+               -> 1 compared with 0 there is no swap because (1>0).
+          After 1st pass we have array : {5,3,6,1,0}
+
+     2nd pass : 
+               -> 5 compared with 3 there is no swap because (3>1).
+               -> 3 compared with 6 there is swap because (3<6) so after swap we get {5,6,3,1,0}.
+               -> 3 compared with 1 there is no swap because (3>1).
+          After 2nd pass we have array : {5,6,3,1,0}
+
+
+     3rd pass : 
+               -> 5 compared with 6 there is swap because (5<6) so after swap we get {6,5,3,1,0}.
+               -> 5 compared with 3 there is no swap because (5>3).
+          After 3rd pass we have array : {6,5,3,1,0}  i.e. Sorted Array.
+
+     so we require 3 passes to sort the given array.
+
+Q5. Find out the number of iterations to sort the array in descending order using selection sort.
+    Input Array {3,5,1,6,0}
+Ans. Original Array is {3 5 1 6 0}
+     In first iteration array is {6 5 1 3 0}
+     In second iteration array is {6 5 1 3 0}
+     In third iteration array is {6 5 3 1 0}
+      Now the array is sorted.
+   so we required 3 iterations to sort the array.

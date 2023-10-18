@@ -1,0 +1,122 @@
+Problem 1: given a number, print its binary representation.
+Input 1: number = 5
+Output 1: 101
+
+Input 2: number = 10
+Output 2: 1010
+
+Ans. Input = 5
+     5/2  ->  1
+     2/2  ->  0
+     1/2  ->  1
+ Scan it from bottom to up so the binary of 5 is 101.
+
+   Input = 10
+   10/2  ->  0
+   5/2   ->  1
+   2/2   ->  0
+   1/2   ->  1
+ Scan it from bottom to up so the binary of 10 is 1010.
+
+Problem 2: given a number ‘n’, predict whether it is a power of two or not.
+Input 1: n = 15
+Output 1: False
+
+Input 2: n = 32
+Output 2: True
+
+Ans. Input = 15
+  convert it in binary ->
+     15/2  ->  1
+     7/2  ->  1
+     3/2  ->  1
+     1/2  ->  1
+ Scan it from bottom to up so the binary of 15 is 1111. Here more than 1 present for power of 2 we get only single 1 bit in the starting and then all bits are 0.
+So, 15 is not a power of two.
+
+  Input = 32
+  convert it in binary ->
+     32/2  ->  0
+     16/2  ->  0
+     8/2  ->  0
+     4/2  ->  0
+     2/2  ->  0
+     1/2  ->  1
+Scan it from bottom to up so the binary of 32 is 100000.
+So, 32 is a power of two.
+
+Q3. Problem 1: Given a number. Using bit manipulation, check whether it is odd or even.
+Input 8, Even
+3, False
+
+Ans. import java.util.Scanner;
+
+    public class DSA2BitMani3 {
+     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter an integer number : ");
+        int num = sc.nextInt();
+        if((num & 1) == 1){
+            System.out.println("Entered number is odd");
+        }
+        else{
+            System.out.println("Entered number is even");
+        }
+        sc.close();
+      }
+    }
+
+Q4. Given a number, count the number of set bits in that number without using an extra space.
+Ans. import java.util.Scanner;
+
+   public class DSA2BitMani4 {
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter a number : ");
+    int num = sc.nextInt();
+    int count = 0;
+    while(num != 0){
+        if((num & 1) == 1){
+            count++;
+        }
+        num = num >> 1;
+    }
+    System.out.println("Number of set bits in entered number : "+count);
+    sc.close();
+   }  
+  }
+
+Q5. Given an integer array, duplicates are present in it in a way that all duplicates appear an even number of times except one which appears an odd number of times. Find that odd appearing element in linear time and without using any extra memory.
+
+Ans. import java.util.Scanner;
+
+    public class DSA2BitMani5 {
+      public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter size of Array : ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        System.out.println("Enter Array elements : ");
+        for(int i = 0; i < arr.length; i++){
+            arr[i] = sc.nextInt();
+        }
+        int xor = 0;
+        for(int i: arr){
+           xor = xor^i;
+        }
+        System.out.println("Odd occuring element is "+xor);
+        sc.close();
+      }
+   }
+
+
+
+
+
+
+
+
+
+
+
+
